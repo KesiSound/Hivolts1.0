@@ -4,6 +4,7 @@ public class Board extends JFrame{
 	//Create New Array of Squares
 	Square[][] ourBoard;
 	//Add Enemies
+	Mho[][] Mhos;
 	
 	public Board(){
 		init();
@@ -11,9 +12,4 @@ public class Board extends JFrame{
 	public void init(){
 		
 	}
-<<<<<<< HEAD
-
 }
-=======
-}
->>>>>>> origin/master
