@@ -1,4 +1,9 @@
+import javax.swing.JFrame;
 
-public class Board {
-
+public class Board extends JFrame{
+	
+	public void init(){
+		
+	}
+	
 }
