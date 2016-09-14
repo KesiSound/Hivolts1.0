@@ -1,4 +1,8 @@
+import javax.swing.JFrame;
 
-public class Main {
- //test change
+public class Main extends JFrame{
+	public static void main(String[] args) {
+		Board ourBoard = new Board();
+		
+	}
 }
