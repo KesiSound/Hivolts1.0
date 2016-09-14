@@ -1,5 +1,5 @@
 
-public class Mho {
+public class Mho extends Character {
 	//Add constructors later
 	
 	
