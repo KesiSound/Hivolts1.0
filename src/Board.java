@@ -13,6 +13,7 @@ public class Board extends JFrame{
 	}
 	public void init(){
 		
+		
 	}
 	
 	public void paint(Graphics2D g){
