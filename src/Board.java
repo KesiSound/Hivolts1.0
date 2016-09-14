@@ -1,3 +1,5 @@
+import java.awt.Graphics;
+
 import javax.swing.JFrame;
 
 public class Board extends JFrame{
@@ -12,4 +14,9 @@ public class Board extends JFrame{
 	public void init(){
 		
 	}
+	
+	public void paint(Graphics g){
+		
+	}
+	
 }
