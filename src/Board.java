@@ -1,13 +1,14 @@
 import javax.swing.JFrame;
 
-<<<<<<< HEAD
 public class Board extends JFrame{
+	//Create New Array of Squares
+	Square[][] ourBoard;
+	//Add Enemies
 	
+	public Board(){
+		init();
+	}
 	public void init(){
 		
 	}
-=======
-public class Board {
->>>>>>> origin/master
-	
 }
