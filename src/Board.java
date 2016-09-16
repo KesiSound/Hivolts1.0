@@ -7,11 +7,15 @@ public class Board extends JFrame{
 	//Square[][] ourBoard;
 	//Add Enemies
 	Mho[][] Mhos;
+	//frameHeight, frameWidth
+	int frameHeight = 480;
+	int frameWidth = 480;
 	
 	public Board(){
 		init();
 	}
 	public void init(){
+		setSize(frameHeight, frameWidth);
 		
 		
 	}
