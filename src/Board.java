@@ -15,15 +15,17 @@ public class Board extends JFrame{
 	//Add Enemies
 	Mho[][] Mhos;
 	//frameHeight, frameWidth
-	int frameHeight = 480;
-	int frameWidth = 480;
+	int frameHeight = 600;
+	int frameWidth = 600;
 	
 	//Keyboard key = new Keyboard();
 	public Board(){
 		init();
 	}
+	
 	public void init(){
 		setSize(frameHeight, frameWidth);
+		
 		
 		
 	}
@@ -31,5 +33,8 @@ public class Board extends JFrame{
 	public void paint(Graphics2D g){
 		
 	}
+	
+	//we should have a method that converts pixels 
+	
 	
 }
