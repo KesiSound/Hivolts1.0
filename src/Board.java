@@ -1,3 +1,5 @@
+import java.awt.Graphics2D;
+
 import javax.swing.JFrame;
 
 public class Board extends JFrame{
@@ -11,5 +13,11 @@ public class Board extends JFrame{
 	}
 	public void init(){
 		
+		
 	}
+	
+	public void paint(Graphics2D g){
+		
+	}
+	
 }
