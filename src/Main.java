@@ -5,6 +5,7 @@ public class Main{
 		JFrame ourBoard = new Board();
 		ourBoard.setTitle("Hivolts");
 		ourBoard.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ourBoard.setVisible(true);
 
 
 	}
