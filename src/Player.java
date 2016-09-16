@@ -1,12 +1,20 @@
 
 public class Player {
-	int xCoord;
-	int yCoord;
 	
+	private int xCoord;
+	public int getxCoord() {
+		return xCoord;
+	}
+	
+	private int yCoord;
+	public int getyCoord() {
+		return yCoord;
+	}
 	public Player() {
 		xCoord = 0;
 		yCoord = 0;
 	}
+	
 	
 	public void moveToPosition(int x, int y) {
 		xCoord = x;
@@ -31,7 +39,33 @@ public class Player {
 		yCoord = yCoord - 1;
 	}
 	
-	void 
+	void moveDiagonalLeftUp() {
+		moveLeft();
+		moveUp();
+	}
+	
+	void moveDiagonalLeftDown() {
+		moveLeft();
+		moveDown();
+	}
+	
+	void moveDiagonalRightUp() {
+		moveRight();
+		moveUp();
+	}
+	
+	void moveDiagonalRightDown() {
+		moveRight();
+		moveDown();
+	}
+	
+	int randomXY() {
+		return (1 + (int)(Math.random() * 12)); 
+	}
+	void moveRandom() {
+		moveToPosition(randomXY(), randomXY());
+	}
+	
 	
 	
 }
