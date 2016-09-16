@@ -4,7 +4,7 @@ public class Barrier {
 	private int barrierX;
 	private int barrierY;
 	private int widthBarrier;
-
+	
 	//constructor
 	
 	public Barrier(int barrierX, int barrierY, int widthBarrier){
@@ -37,6 +37,9 @@ public class Barrier {
 		this.barrierY = barriery;
 		return barrierY;
 	}
+	
+	//create a method that passes in the x coordinates of the playing board and then make sures that the barriers are not drawn on top of each other
+	
 	
 	
 	
