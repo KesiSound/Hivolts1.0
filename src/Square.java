@@ -5,7 +5,7 @@ public class Square extends JComponent {
 	private char filled;
 	
 	
-	public Square(){
+	public Square(int x, int y){
 		this.x = x;
 		this.y = y;
 	}

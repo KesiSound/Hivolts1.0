@@ -2,7 +2,7 @@ import javax.swing.JFrame;
 
 public class Board extends JFrame{
 	//Create New Array of Squares
-	Square[][] ourBoard;
+	//Square[][] ourBoard;
 	//Add Enemies
 	Mho[][] Mhos;
 	
