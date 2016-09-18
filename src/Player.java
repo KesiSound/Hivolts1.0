@@ -15,23 +15,19 @@ public class Player extends JLabel {
 	}
 	
 	void moveUp(){
-		//int temp = getY();
 		y -= 1;
 		
 		
 	}
 	 void moveDown(){
-		//int temp = getY();
 		y += 1;
 	}
 	
 	 void moveRight(){
-		//int temp = getX();
 		x += 1;
 		
 	}
 	 void moveLeft(){
-	//	int temp = getX();
 		x -= 1;
 	}
 	
