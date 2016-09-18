@@ -19,13 +19,23 @@ public class Main implements KeyListener{
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-				
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+        int c = e.getKeyCode();
+
 		// TODO Auto-generated method stub
-		
+		  if (c ==KeyEvent.VK_UP) {
+			  b.player.moveUp();
+	        } else if(c==KeyEvent.VK_DOWN) {                
+	          b.player.moveDown();
+	        } else if(c==KeyEvent.VK_LEFT) { 
+	        	b.player.moveLeft();
+	        } else if(c==KeyEvent.VK_RIGHT) {                
+	        	b.player.moveRight();
+	        } 
+
 		
 	}
 

@@ -14,28 +14,32 @@ public class Player extends JLabel {
 		this.y = y;
 	}
 	
-	private void moveUp(){
+	void moveUp(){
 		int temp = getY();
-		
+		y -= temp;
 		
 		
 	}
-	private void moveDown(){
-		
-	}
-	
-	private void moveRight(){
-		
-	}
-	private void moveLeft(){
-		
+	 void moveDown(){
+		int temp = getY();
+		y += temp;
 	}
 	
-	 public int getX(){
+	 void moveRight(){
+		int temp = getX();
+		x += temp;
+		
+	}
+	 void moveLeft(){
+		int temp = getX();
+		x -= temp;
+	}
+	
+	  public int getX(){
 		return this.x;
 	}
 	
-	 public int getY(){
+	  public int getY(){
 		 return this.y;
 	}
 
