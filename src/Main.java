@@ -15,6 +15,7 @@ public class Main implements KeyListener{
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.pack();		
 		window.setVisible(true);
+		
 	}
 
 	@Override
@@ -24,16 +25,16 @@ public class Main implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
         int c = e.getKeyCode();
-
+     
 		// TODO Auto-generated method stub
 		  if (c ==KeyEvent.VK_UP) {
-			  b.player.moveUp();
+			  b.ourPlayer.moveUp();
 	        } else if(c==KeyEvent.VK_DOWN) {                
-	          b.player.moveDown();
+	          b.ourPlayer.moveDown();
 	        } else if(c==KeyEvent.VK_LEFT) { 
-	        	b.player.moveLeft();
+	        	b.ourPlayer.moveLeft();
 	        } else if(c==KeyEvent.VK_RIGHT) {                
-	        	b.player.moveRight();
+	        	b.ourPlayer.moveRight();
 	        } 
 
 		

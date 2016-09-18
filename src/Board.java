@@ -11,8 +11,9 @@ public class Board extends JPanel {
 	int frameHeight = 600, frameWidth = 600;
 	private JLabel[][] squares;
 	private int ROWS = 12, COLS = 12;
-	Player player = new Player(6,5);			//have to make the points randomized
-
+	//have to make the points randomized
+	Player ourPlayer = new Player(0,0);
+	//ourPlayer.moveRandom(); - Doesn't work
 	// Keyboard key = new Keyboard();
 	public Board() {
 		setPreferredSize(new Dimension(frameHeight, frameWidth));
