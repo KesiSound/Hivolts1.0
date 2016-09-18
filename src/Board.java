@@ -11,6 +11,7 @@ public class Board extends JPanel {
 	int frameHeight = 600, frameWidth = 600;
 	private JLabel[][] squares;
 	private int ROWS = 12, COLS = 12;
+	Player player = new Player(6,5);			//have to make the points randomized
 
 	// Keyboard key = new Keyboard();
 	public Board() {
@@ -24,9 +25,10 @@ public class Board extends JPanel {
 	}
 
 	private void add() {
+		JLabel label;
+
 		for (int i = 0; i < ROWS; i++) {
 			for (int j = 0; j < COLS; j++) {
-				JLabel label;
 				if (i == 0 || i == ROWS - 1 || j == 0 || j == COLS - 1) {
 					label = new Barrier(i, j);
 				}
@@ -38,5 +40,13 @@ public class Board extends JPanel {
 				add(label);
 			}
 		}
+		
+		
+		
+		
+		
+		
 	}
+	
+
 }
