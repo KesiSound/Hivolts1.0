@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Graphics;
 
 public class Barrier {
 	
@@ -39,6 +41,13 @@ public class Barrier {
 	}
 	
 	//create a method that passes in the x coordinates of the playing board and then make sures that the barriers are not drawn on top of each other
+	
+	
+	//creating a polymorphic method for paint to draw the barrier
+	public void paint(Graphics g){
+		g.setColor(Color.CYAN);
+		g.drawRoundRect(getBarrierX(), getBarrierY(), getBarrierWidth(), 20, 10, 10);
+	}
 	
 	
 	
