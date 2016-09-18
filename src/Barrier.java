@@ -1,46 +1,14 @@
+import java.awt.Image;
 
-public class Barrier {
-	
-	private int barrierX;
-	private int barrierY;
-	private int widthBarrier;
-	
-	//constructor
-	
-	public Barrier(int barrierX, int barrierY, int widthBarrier){
-		this.barrierX = barrierX;
-		this.barrierY = barrierY;
-		this.widthBarrier = widthBarrier;
+import javax.swing.*;
+
+public class Barrier extends JLabel {
+	private int x, y;
+	public Barrier(int x, int y) {
+		ImageIcon imageIcon = new ImageIcon(new ImageIcon("img/Fence.png").
+		getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+		this.setIcon(imageIcon);
+		this.x = x;
+		this.y = y;
 	}
-	
-	//getters
-	public int getBarrierX(){
-		return this.barrierX;
-	}
-	
-	public int getBarrierY(){
-		return this.barrierY;
-	}
-	
-	public int getBarrierWidth(){
-		return this.widthBarrier;
-	}
-	
-	
-	//setters
-	public int setBarrierX(int barrierx){
-		this.barrierX = barrierx;
-		return barrierX;
-	}
-	
-	public int setBarrierY( int barriery){
-		this.barrierY = barriery;
-		return barrierY;
-	}
-	
-	//create a method that passes in the x coordinates of the playing board and then make sures that the barriers are not drawn on top of each other
-	
-	
-	
-	
 }

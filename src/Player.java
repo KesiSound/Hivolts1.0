@@ -1,71 +1,14 @@
+import java.awt.Image;
 
-public class Player {
-	
-	private int xCoord;
-	public int getxCoord() {
-		return xCoord;
+import javax.swing.*;
+
+public class Player extends JLabel {
+	private int x, y;
+	public Player(int x, int y) {
+		ImageIcon imageIcon = new ImageIcon(new ImageIcon("img/Player.png").
+		getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+		this.setIcon(imageIcon);
+		this.x = x;
+		this.y = y;
 	}
-	
-	private int yCoord;
-	public int getyCoord() {
-		return yCoord;
-	}
-	public Player() {
-		xCoord = 0;
-		yCoord = 0;
-	}
-	
-	
-	public void moveToPosition(int x, int y) {
-		xCoord = x;
-		yCoord = y;
-	}
-	
-	//Movements
-	void moveLeft() {
-		xCoord = xCoord - 1;
-	}
-	
-	void moveRight() {
-		xCoord = xCoord +1;
-	}
-	
-	void moveUp() {
-		yCoord = yCoord + 1;
-		
-	}
-	
-	void moveDown() {
-		yCoord = yCoord - 1;
-	}
-	
-	void moveDiagonalLeftUp() {
-		moveLeft();
-		moveUp();
-	}
-	
-	void moveDiagonalLeftDown() {
-		moveLeft();
-		moveDown();
-	}
-	
-	void moveDiagonalRightUp() {
-		moveRight();
-		moveUp();
-	}
-	
-	void moveDiagonalRightDown() {
-		moveRight();
-		moveDown();
-	}
-	
-	int randomXY() {
-		return (1 + (int)(Math.random() * 12)); 
-	}
-	void moveRandom() {
-		moveToPosition(randomXY(), randomXY());
-	}
-	
-	
-	
 }

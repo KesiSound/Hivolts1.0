@@ -1,40 +1,41 @@
-import java.awt.Graphics2D;
 import java.awt.*;
-
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JFrame;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
+import javax.swing.border.EmptyBorder;
 
-public class Board extends JFrame{
-	//Create New Array of Squares
-	//Square[][] ourBoard;
-	//Add Enemies
+public class Board extends JPanel {
 	Mho[][] Mhos;
-	//frameHeight, frameWidth
-	int frameHeight = 600;
-	int frameWidth = 600;
-	
-	//Keyboard key = new Keyboard();
-	public Board(){
-		init();
+	int frameHeight = 600, frameWidth = 600;
+	private JLabel[][] squares;
+	private int ROWS = 12, COLS = 12;
+
+	// Keyboard key = new Keyboard();
+	public Board() {
+		setPreferredSize(new Dimension(frameHeight, frameWidth));
+		squares = new JLabel[ROWS][COLS];
+		setBorder(BorderFactory.createLineBorder(Color.blue));
+		setLayout(new GridLayout(ROWS, COLS));
+		add();
+		this.setVisible(true);
 	}
-	
-	public void init(){
-		setSize(frameHeight, frameWidth);
-		
-		
-		
+
+	private void add() {
+		for (int i = 0; i < ROWS; i++) {
+			for (int j = 0; j < COLS; j++) {
+				JLabel label;
+				if (i == 0 || i == ROWS - 1 || j == 0 || j == COLS - 1) {
+					label = new Barrier(i, j);
+				}
+				else {
+					label = new JLabel("b" + i + j);
+				}
+				label.setBorder(new EmptyBorder(10, 10, 10, 10));
+				squares[i][j] = label;
+				add(label);
+			}
+		}
 	}
-	
-	public void paint(Graphics2D g){
-		
-	}
-	
-	//we should have a method that converts pixels 
-	
-	
 }

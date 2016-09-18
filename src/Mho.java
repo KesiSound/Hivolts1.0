@@ -1,21 +1,14 @@
+import java.awt.Image;
 
-public class Mho extends Character {
-	//Add constructors later
-	
-	
-	//AI Part
-	
-	void AI() { 
-		//Vertical/horizontal, move one square towards
-		
-		//Diagonally towards
-		
-		//If horizontal distances >= vertical distance, move horizontally
-		
-		//If vertical distance >= horizontal distance, move vertically
-		
-		//Move into electric fence
-		
-		//Do not move
+import javax.swing.*;
+
+public class Mho extends JLabel {
+	private int x, y;
+	public Mho(int x, int y) {
+		ImageIcon imageIcon = new ImageIcon(new ImageIcon("img/Enemy.png").
+		getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+		this.setIcon(imageIcon);
+		this.x = x;
+		this.y = y;
 	}
 }
