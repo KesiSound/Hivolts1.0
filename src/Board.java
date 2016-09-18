@@ -17,6 +17,7 @@ public class Board extends JPanel {
 		setPreferredSize(new Dimension(frameHeight, frameWidth));
 		squares = new JLabel[ROWS][COLS];
 		setBorder(BorderFactory.createLineBorder(Color.blue));
+		setBackground(Color.BLACK);
 		setLayout(new GridLayout(ROWS, COLS));
 		add();
 		this.setVisible(true);
