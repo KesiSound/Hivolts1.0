@@ -12,7 +12,6 @@ public class Board extends JPanel {
 	private JLabel[][] squares;
 	private int ROWS = 12, COLS = 12;
 	//have to make the points randomized
-	Player ourPlayer = new Player(0,0);
 	//ourPlayer.moveRandom(); - Doesn't work
 	// Keyboard key = new Keyboard();
 	public Board() {
@@ -34,7 +33,7 @@ public class Board extends JPanel {
 					label = new Barrier(i, j);
 				}
 				else {
-					label = new JLabel("b" + i + j);
+					label = new Player(i,j); 
 				}
 				label.setBorder(new EmptyBorder(10, 10, 10, 10));
 				squares[i][j] = label;

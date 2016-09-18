@@ -28,13 +28,13 @@ public class Main implements KeyListener{
      
 		// TODO Auto-generated method stub
 		  if (c ==KeyEvent.VK_UP) {
-			  b.ourPlayer.moveUp();
+			  //b.ourPlayer.moveUp();
 	        } else if(c==KeyEvent.VK_DOWN) {                
-	          b.ourPlayer.moveDown();
+	         // b.ourPlayer.moveDown();
 	        } else if(c==KeyEvent.VK_LEFT) { 
-	        	b.ourPlayer.moveLeft();
+	        	//b.ourPlayer.moveLeft();
 	        } else if(c==KeyEvent.VK_RIGHT) {                
-	        	b.ourPlayer.moveRight();
+	        	//b.ourPlayer.moveRight();
 	        } 
 
 		

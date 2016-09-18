@@ -6,69 +6,73 @@ import javax.swing.*;
 
 public class Player extends JLabel {
 	private int x, y;
+
 	public Player(int x, int y) {
-		ImageIcon imageIcon = new ImageIcon(new ImageIcon("Player.png").
-		getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+		ImageIcon imageIcon = new ImageIcon(
+				new ImageIcon("img/Player.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
 		this.setIcon(imageIcon);
 		this.x = x;
 		this.y = y;
 	}
-	
-	void moveUp(){
+
+	void moveUp() {
 		y -= 1;
-		
-		
+
 	}
-	 void moveDown(){
+
+	void moveDown() {
 		y += 1;
 	}
-	
-	 void moveRight(){
+
+	void moveRight() {
 		x += 1;
-		
+
 	}
-	 void moveLeft(){
+
+	void moveLeft() {
 		x -= 1;
 	}
+
+	void moveUpRight() {
+		moveUp();
+		moveRight();
+	}
+
+	void moveUpLeft() {
+		moveUp();
+		moveRight();
+	}
+
+	void moveDownRight() {
+		moveDown();
+		moveRight();
+	}
+
+	void moveDownLeft() {
+		moveDown();
+		moveLeft();
+	}
 	
-	 void moveUpRight() {
-		 moveUp();
-		 moveRight();
-	 }
-	 
-	 void moveUpLeft() {
-		 moveUp();
-		 moveRight();
-	 }
-	 
-	 void moveDownRight() {
-		 moveDown();
-		 moveRight();
-	 }
-	 
-	 void moveDownLeft() {
-		 moveDown();
-		 moveLeft();
-	 }
-	  public int getX(){
+	public int getX1() {
 		return this.x;
 	}
-	
-	  public int getY(){
-		 return this.y;
+
+	public int getY1() {
+		return this.y;
 	}
-	  
-	  int randomXY() {
-			return (1 + (int)(Math.random() * 12)); 
-	  
-	  }
-	  void moveRandom() {
+
+	int randomXY() {
+		return (1 + (int) (Math.random() * 12));
+
+	}
+
+	void moveRandom() {
 		moveToPosition(randomXY(), randomXY());
-	  }
-		
-		public void moveToPosition(int x, int y) {
-			this.x = x;
-			this.y = y;
-		}
+	}
+
+	public void moveToPosition(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
 
 }
