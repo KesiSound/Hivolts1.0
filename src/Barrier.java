@@ -20,24 +20,25 @@ public class Barrier extends JLabel {
 	void moveToPosition(int x, int y) {
 		this.x = x;
 		this.y= y;
+		
 	}
 	
 	int randomXY() {
-		return (1 + (int) (Math.random() * 12));
+		return (1 + (int) (Math.random() * 11));
 
 	}
 
-	void moveRandom() {
+	void moveRandomInside() {
 		moveToPosition(randomXY(), randomXY());
 	}
 	
-	public int getX() {
+
+	int getX1() {
 		return x;
 	}
 	
-	public int getY() {
+	int getY1() {
 		return y;
 	}
-	
 	
 }

@@ -40,7 +40,14 @@ public class Board extends JPanel {
 				add(label);
 			}
 		}
-		
+		//Should work to randomize in the future
+		//for (int z = 0; z < 20; z++) {
+			//Barrier myBarrier = new Barrier(0,0);
+			//myBarrier.moveRandomInside();
+			//label = myBarrier;
+			//add(label);
+		//}
+
 	}
 	
 
