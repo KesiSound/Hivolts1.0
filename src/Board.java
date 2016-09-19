@@ -7,7 +7,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 public class Board extends JPanel {
-	Mho[][] Mhos;
+	public static Mho[] Mhos;
 	int frameHeight = 600, frameWidth = 600;
 	private JLabel[][] squares;
 	private int ROWS = 12, COLS = 12;
@@ -40,11 +40,6 @@ public class Board extends JPanel {
 				add(label);
 			}
 		}
-		
-		
-		
-		
-		
 		
 	}
 	

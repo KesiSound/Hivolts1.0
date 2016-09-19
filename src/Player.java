@@ -74,5 +74,26 @@ public class Player extends JLabel {
 		this.x = x;
 		this.y = y;
 	}
-
+	
+	void Jump() {
+		int randomX;
+		int randomY;
+		int counter = 0;
+		while (true) {
+			counter = 0;
+			randomX = randomXY();
+			randomY = randomXY();
+			for (int i = 0; i < 12; i++) {
+				if ((randomX != Board.Mhos[i].getX()) && (randomY != Board.Mhos[i].getY())) {
+					counter++;
+				}
+	
+			}
+			if (counter==12) {
+				moveToPosition(randomX, randomY);
+				break;
+			}
+		
+		}	
+	}
 }
