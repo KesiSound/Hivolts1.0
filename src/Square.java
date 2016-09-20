@@ -24,5 +24,8 @@ public class Square extends JComponent {
 		return status;
 	}
 	
+	void setStatus(char newStatus) {
+		status = newStatus;
+	}
 	
 }

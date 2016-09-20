@@ -10,6 +10,7 @@ public class Board extends JPanel {
 	public static Mho[] Mhos;
 	int frameHeight = 600, frameWidth = 600;
 	private JPanel[][] squares;
+	private Square[][] squareTracker = new Square[12][12];
 	private int ROWS = 12, COLS = 12;
 	//have to make the points randomized
 	//ourPlayer.moveRandom(); - Doesn't work
@@ -20,8 +21,9 @@ public class Board extends JPanel {
 		setBackground(Color.BLACK);
 		setLayout(new GridLayout(ROWS, COLS));
 		add();
-		addLabels(); 
+		//addLabels(); 
 		addFenceBorder();
+		addRandomFences();
 		this.setVisible(true);
 	}
 	private void add(){
@@ -55,17 +57,45 @@ public class Board extends JPanel {
 					fences = new Barrier(i, a);
 					fences.setBorder(new EmptyBorder(10, 10, 10, 10));
 					squares[fences.getX()][fences.getY()].add(fences);
+					//squareTracker[i][a].setStatus('f');
 				}
 			}
 			
 			fences = new Barrier(i, 0);
 			fences.setBorder(new EmptyBorder(10, 10, 10, 10));
 			squares[fences.getX()][fences.getY()].add(fences);
+		//	squareTracker[fences.getX()][fences.getY()].setStatus('f');
 			
 			fences = new Barrier(i, 11);
 			fences.setBorder(new EmptyBorder(10, 10, 10, 10));
 			squares[fences.getX()][fences.getY()].add(fences);
+			//squareTracker[fences.getX()][fences.getY()].setStatus('f');
 		}	
+	}
+	
+	void addRandomFences() {
+		JLabel fences;
+		int counter = 0;
+		while (true) { 
+			int randomX = randomXYInside();
+			int randomY = randomXYInside();
+		//	if (squareTracker[randomX][randomY].getStatus() != 'f') {
+				fences = new Barrier(0,0);
+				((Barrier) fences).moveRandomInside();
+				fences.setBorder(new EmptyBorder(10, 10, 10, 10));
+				squares[fences.getX()][fences.getY()].add(fences);
+			//	squareTracker[fences.getX()][fences.getY()].setStatus('f');
+				counter++;
+				if (counter == 20) {
+					break;
+				}
+			//}	
+		}
+	}
+	
+	int randomXYInside() {
+		return (1 + (int) (Math.random() * 11));
+
 	}
 }
 	
