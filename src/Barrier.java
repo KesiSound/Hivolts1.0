@@ -16,6 +16,7 @@ public class Barrier extends JLabel {
 		this.x = x;
 		this.y = y;
 	}
+
 	@Override
 	public int getX() {
 		return this.x;
@@ -24,4 +25,31 @@ public class Barrier extends JLabel {
 	public int getY() {
 		return this.y;
 	}
+
+	
+	void moveToPosition(int x, int y) {
+		this.x = x;
+		this.y= y;
+		
+	}
+	
+	int randomXY() {
+		return (1 + (int) (Math.random() * 11));
+
+	}
+
+	void moveRandomInside() {
+		moveToPosition(randomXY(), randomXY());
+	}
+	
+
+	int getX1() {
+		return x;
+	}
+	
+	int getY1() {
+		return y;
+	}
+	
+
 }

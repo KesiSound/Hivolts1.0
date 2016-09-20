@@ -11,4 +11,28 @@ public class Mho extends JLabel {
 		this.x = x;
 		this.y = y;
 	}
+	void moveToPosition(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+	int randomXY() {
+		return (1 + (int) (Math.random() * 12));
+
+	}
+
+	void moveRandom() {
+		moveToPosition(randomXY(), randomXY());
+	}
+	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
+	}
+	//AI
+	void moveAI() {
+		
+	}
 }
