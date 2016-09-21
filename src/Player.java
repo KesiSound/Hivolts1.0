@@ -53,16 +53,18 @@ public class Player extends JLabel {
 		moveLeft();
 	}
 	
-	public int getX1() {
+	@Override
+	public int getX() {
 		return this.x;
 	}
 
-	public int getY1() {
+	@Override
+	public int getY() {
 		return this.y;
 	}
 
 	int randomXY() {
-		return (1 + (int) (Math.random() * 12));
+		return (1 + (int) (Math.random() * 10));
 
 	}
 

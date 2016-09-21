@@ -11,6 +11,11 @@ public class Square extends JComponent {
 		this.status = status; //status will hold a character like 'f' - fence, 'm' - mho, 'p' - player, or 'u' -unfilled
 	}
 	
+	public Square(){
+		this.x = 10;
+		this.y = 10;
+		this.status = 'u'; //status will hold a character like 'f' - fence, 'm' - mho, 'p' - player, or 'u' -unfilled
+	}
 	
 	public int getX() {
 		return x;
@@ -25,7 +30,7 @@ public class Square extends JComponent {
 	}
 	
 	void setStatus(char newStatus) {
-		status = newStatus;
+		this.status = newStatus;
 	}
 	
 }
