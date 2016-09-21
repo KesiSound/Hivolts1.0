@@ -21,14 +21,15 @@ public class Board extends JPanel {
 		setBackground(Color.BLACK);
 		setLayout(new GridLayout(ROWS, COLS));
 		add();
-		//addLabels(); 
+		addLabels(); 
 		addFenceBorder();
-		addRandomFences();
+		//addRandomFences();
+		spawnPlayer();
 		this.setVisible(true);
 	}
 	private void add(){
-		for (int i = 0; i < ROWS; i++) {
-			for (int j = 0; j < COLS; j++) {
+		for (int j = 0; j < ROWS; j++) {
+			for (int i = 0; i < COLS; i++) {
 				squares[i][j] = new JPanel(); 
 				add(squares[i][j]); 
 			}
@@ -39,7 +40,7 @@ public class Board extends JPanel {
 		JLabel label;
 		JLabel label1; 
 		label = new Barrier(3,2);
-		label1 = new Barrier(11,11); 
+		label1 = new Barrier(4,2); 
 		label.setBorder(new EmptyBorder(10, 10, 10, 10));
 		label1.setBorder(new EmptyBorder(10, 10, 10, 10));
 		squares[label.getX()][label.getY()].add(label);
@@ -96,6 +97,15 @@ public class Board extends JPanel {
 	int randomXYInside() {
 		return (1 + (int) (Math.random() * 11));
 
+	}
+	
+	void spawnPlayer() {
+		Player ourPlayer = new Player(0,0);
+		ourPlayer.moveRandom();
+		JLabel playerLabel = ourPlayer;
+		ourPlayer.setBorder(new EmptyBorder(10,10,10,10));
+		squares[ourPlayer.getX()][ourPlayer.getY()].add(playerLabel);
+		
 	}
 }
 	
