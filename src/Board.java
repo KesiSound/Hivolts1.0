@@ -93,13 +93,11 @@ public class Board extends JPanel implements KeyListener {
 	
 	void addRandomFences() {
 		JLabel fences;
-		int counter = 1;
+		int counter = 0;
 		while (true) { 
-			int randomX = randomXYInside();
-			int randomY = randomXYInside();
-			if (squareTracker[randomX][randomY].getStatus() != 'f') {
-				fences = new Barrier(0,0);
-				((Barrier) fences).moveRandomInside();
+			fences = new Barrier(0,0);
+			((Barrier) fences).moveRandomInside();
+			if (squareTracker[fences.getX()][fences.getY()].getStatus() != 'f') {
 				fences.setBorder(new EmptyBorder(10, 10, 10, 10));
 				squares[fences.getX()][fences.getY()].add(fences);
 				squareTracker[fences.getX()][fences.getY()].setStatus('f');
@@ -111,10 +109,7 @@ public class Board extends JPanel implements KeyListener {
 		}
 	}
 	
-	int randomXYInside() {
-		return (1 + (int) (Math.random() * 11));
-
-	}
+	
 	
 	void spawnPlayer() {
 	
