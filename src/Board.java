@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -6,14 +8,15 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class Board extends JPanel {
+public class Board extends JPanel implements KeyListener {
 	public static Mho[] Mhos;
 	int frameHeight = 600, frameWidth = 600;
 	private JPanel[][] squares;
 	private Square[][] squareTracker = new Square[12][12];
 	
 	private int ROWS = 12, COLS = 12;
-	
+	Player ourPlayer = new Player(0,0);
+
 	
 	//have to make the points randomized
 	//ourPlayer.moveRandom(); - Doesn't work
@@ -22,6 +25,8 @@ public class Board extends JPanel {
 		setPreferredSize(new Dimension(frameHeight, frameWidth));
 		squares = new JPanel[ROWS][COLS]; 
 		setLayout(new GridLayout(ROWS, COLS));
+		setBackground(Color.BLACK);
+		addSquareTracker();
 		add();
 		addFenceBorder();
 		addRandomFences();
@@ -88,7 +93,7 @@ public class Board extends JPanel {
 	
 	void addRandomFences() {
 		JLabel fences;
-		int counter = 0;
+		int counter = 1;
 		while (true) { 
 			int randomX = randomXYInside();
 			int randomY = randomXYInside();
@@ -112,13 +117,51 @@ public class Board extends JPanel {
 	}
 	
 	void spawnPlayer() {
-		Player ourPlayer = new Player(0,0);
+	
 		ourPlayer.moveRandom();
 		JLabel playerLabel = ourPlayer;
 		ourPlayer.setBorder(new EmptyBorder(10,10,10,10));
 		squares[ourPlayer.getX()][ourPlayer.getY()].add(playerLabel);
+	}
+	
+	void addSquareTracker() {
+		for (int a = 0; a < 12; a++) {
+			for (int b = 0; b < 12; b++) {
+				squareTracker[a][b] = new Square(0,0,'u');
+			}
+		}
+	}
+	
+	@Override
+	public void keyTyped(KeyEvent e) {
+	}
+	
+	@Override
+	public void keyPressed(KeyEvent e) {
+        int c = e.getKeyCode();
+     
+		// TODO Auto-generated method stub
+		  if (c == KeyEvent.VK_UP) {
+			  ourPlayer.moveUp();
+	        } else if(c==KeyEvent.VK_DOWN) {                
+	        	ourPlayer.moveDown();
+	        } else if(c==KeyEvent.VK_LEFT) { 
+	        	ourPlayer.moveLeft();
+	        } else if(c==KeyEvent.VK_RIGHT) {                
+	        	ourPlayer.moveRight();
+	        } 
+
 		
 	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
 }
 	
 

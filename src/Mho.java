@@ -32,7 +32,30 @@ public class Mho extends JLabel {
 		return y;
 	}
 	//AI
-	void moveAI() {
+	void moveAI(Player thePlayer) {
+		//If the player is directly vertical or horizontal, move towards it
+		if (thePlayer.getX() == getX() || thePlayer.getY() == getY()) {
+			if (thePlayer.getX() == getX()) {
+				if (thePlayer.getY() > getY()) {
+					this.y--;
+				}
+				else {
+					this.y++;
+				}
+			}
+			if(thePlayer.getY() == getY()) {
+				if (thePlayer.getX() > getY()) {
+					this.x++;
+				}
+				else {
+					this.x--;
+				}
+			}
+		}
 		
+		//If it is not directly vertical or horizontal...
+		else {
+			
+		}
 	}
 }
