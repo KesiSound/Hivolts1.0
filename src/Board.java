@@ -32,6 +32,8 @@ public class Board extends JPanel implements KeyListener {
 		addRandomFences();
 		spawnPlayer();
 		this.setVisible(true);
+		addKeyListener(this);
+		
 	}
 	private void add(){
 		for (int j = 0; j < ROWS; j++) {
@@ -97,7 +99,7 @@ public class Board extends JPanel implements KeyListener {
 		while (true) { 
 			fences = new Barrier(0,0);
 			((Barrier) fences).moveRandomInside();
-			if (squareTracker[fences.getX()][fences.getY()].getStatus() != 'f') {
+			if (squareTracker[fences.getX()][fences.getY()].getStatus() == 'u') {
 				fences.setBorder(new EmptyBorder(10, 10, 10, 10));
 				squares[fences.getX()][fences.getY()].add(fences);
 				squareTracker[fences.getX()][fences.getY()].setStatus('f');
@@ -112,11 +114,11 @@ public class Board extends JPanel implements KeyListener {
 	
 	
 	void spawnPlayer() {
-	
 		ourPlayer.moveRandom();
 		JLabel playerLabel = ourPlayer;
 		ourPlayer.setBorder(new EmptyBorder(10,10,10,10));
 		squares[ourPlayer.getX()][ourPlayer.getY()].add(playerLabel);
+		repaint();
 	}
 	
 	void addSquareTracker() {
@@ -133,18 +135,13 @@ public class Board extends JPanel implements KeyListener {
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-        int c = e.getKeyCode();
-     
-		// TODO Auto-generated method stub
-		  if (c == KeyEvent.VK_UP) {
-			  ourPlayer.moveUp();
-	        } else if(c==KeyEvent.VK_DOWN) {                
-	        	ourPlayer.moveDown();
-	        } else if(c==KeyEvent.VK_LEFT) { 
-	        	ourPlayer.moveLeft();
-	        } else if(c==KeyEvent.VK_RIGHT) {                
-	        	ourPlayer.moveRight();
-	        } 
+		char key = e.getKeyChar();
+		switch(key) {
+		case 'w':
+			System.out.println("hit w lol");
+			ourPlayer.moveUp();
+			break;
+		}
 
 		
 	}
