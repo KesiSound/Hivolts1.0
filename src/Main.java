@@ -8,7 +8,7 @@ public class Main {
 		Board b = new Board();
 		b.setFocusable(true);
 		JFrame window = new JFrame();
-		window.setSize(700, 700);
+		window.setSize(600, 600);
 		window.add(b);
 		window.setTitle("Hivolts");
 		window.setBackground(Color.BLACK);
@@ -16,6 +16,4 @@ public class Main {
 		window.pack();		
 		window.setVisible(true);
 	}
-
-	
 }

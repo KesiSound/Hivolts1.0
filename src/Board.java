@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -44,22 +45,6 @@ public class Board extends JPanel implements KeyListener {
 			}
 		}
 	}
-
-	private void addLabels() {
-		repaint();
-		JLabel label;
-		JLabel label1; 
-		label = new Barrier(3,2);
-		label1 = new Barrier(4,2); 
-		label.setBorder(new EmptyBorder(10, 10, 10, 10));
-		label1.setBorder(new EmptyBorder(10, 10, 10, 10));
-		squares[label.getX()][label.getY()].add(label);
-		squares[label1.getX()][label1.getY()].add(label1);
-		label.setBorder(new EmptyBorder(10, 10, 10, 10));
-		
-		
-	}
-
 	
 	void addFenceBorder() {
 		repaint();
@@ -135,6 +120,10 @@ public class Board extends JPanel implements KeyListener {
 		}
 	}
 	
+	void spawnMhos() {
+		
+	}
+	
 	@Override
 	public void keyTyped(KeyEvent e) {
 	}
@@ -152,7 +141,10 @@ public class Board extends JPanel implements KeyListener {
 				break;
 			}
 			else {
-				ourPlayer.moveDown();
+				System.out.println("You lose");
+				setVisible(false);
+				System.exit(0);
+
 			}
 			
 		case 'a':
@@ -164,7 +156,9 @@ public class Board extends JPanel implements KeyListener {
 				break;
 			}
 			else {
-				ourPlayer.moveRight();
+				System.out.println("You lose");
+				setVisible(false);
+				System.exit(0);
 			}
 			
 		case 'd':
@@ -176,7 +170,9 @@ public class Board extends JPanel implements KeyListener {
 				break;
 			}
 			else {
-				ourPlayer.moveLeft();
+				System.out.println("You lose");
+				setVisible(false);
+				System.exit(0);
 			}
 		case 's':
 			System.out.println("hit s");
@@ -188,34 +184,74 @@ public class Board extends JPanel implements KeyListener {
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
 				repaint();
-				break;
+				break;	
+				
 			}
 			else {
-				ourPlayer.moveUp();
+				System.out.println("You lose");
+				setVisible(false);
+				System.exit(0);
 			}
 		case 'q':
 			System.out.println("hit q");
 			ourPlayer.moveUpLeft();
-			repaint();
+			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
+				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
+				repaint();
+				break;
+			}
+			else {
+				System.out.println("You lose");
+				setVisible(false);
+				System.exit(0);
+			}
 		case 'e':
 			System.out.println("hit e");
 			ourPlayer.moveUpRight();
-			repaint();
-			break;
+			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
+				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
+				repaint();
+				break;
+			}
+			else {
+				System.out.println("You lose");
+				setVisible(false);
+				System.exit(0);
+
+			}
 		case 'z':
 			System.out.println("hit z");
 			ourPlayer.moveDownLeft();
-			repaint();
-			break;
+			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
+				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
+				repaint();
+				break;
+			}
+			else {
+				System.out.println("You lose");
+				setVisible(false);
+				System.exit(0);
+			}
 		case 'c':
 			System.out.println("hit c");
 			ourPlayer.moveDownRight();
-			repaint();
-			break;
+			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
+				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
+				repaint();
+				break;
+			}
+			else {
+				System.out.println("You lose");
+				setVisible(false);
+				System.exit(0);
+			}
 		case 'j':
 			ourPlayer.Jump();
-			repaint();
-			break;
+			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
+				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
+				repaint();
+				break;
+			}
 		}
 
 		
