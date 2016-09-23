@@ -13,15 +13,14 @@ public class Board extends JPanel implements KeyListener {
 	public static Mho[] Mhos;
 	int frameHeight = 600, frameWidth = 600;
 	private JPanel[][] squares;
-	private Square[][] squareTracker = new Square[12][12];
+	public static Square[][] squareTracker = new Square[12][12];
 	
 	private int ROWS = 12, COLS = 12;
 	Player ourPlayer = new Player(0,0);
 
 	
 	//have to make the points randomized
-	//ourPlayer.moveRandom(); - Doesn't work
-	// Keyboard key = new Keyboard();
+
 	public Board() {
 		setPreferredSize(new Dimension(frameHeight, frameWidth));
 		squares = new JPanel[ROWS][COLS]; 
@@ -159,6 +158,10 @@ public class Board extends JPanel implements KeyListener {
 				System.out.println("You lose");
 				setVisible(false);
 				System.exit(0);
+				ourPlayer.moveRight();
+				setVisible(false);
+				System.exit(0);
+				
 			}
 			
 		case 'd':
@@ -170,9 +173,12 @@ public class Board extends JPanel implements KeyListener {
 				break;
 			}
 			else {
+
 				System.out.println("You lose");
 				setVisible(false);
 				System.exit(0);
+				ourPlayer.moveLeft();
+
 			}
 		case 's':
 			System.out.println("hit s");
@@ -191,6 +197,7 @@ public class Board extends JPanel implements KeyListener {
 				System.out.println("You lose");
 				setVisible(false);
 				System.exit(0);
+				
 			}
 		case 'q':
 			System.out.println("hit q");
@@ -261,6 +268,13 @@ public class Board extends JPanel implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		//Add moveAI();
+	}
+	
+	
+	public void drawDeadScreen(Graphics2D g){
+		g.setColor(Color.BLACK);
+		g.fillRect(0,0,800,800);
+		g.drawString("AHHAH you lost", 350, 350);
 	}
 
 	

@@ -86,8 +86,10 @@ public class Player extends JLabel {
 			randomX = randomXY();
 			randomY = randomXY();
 			for (int i = 0; i < 12; i++) {
-				if ((randomX != Board.Mhos[i].getX()) && (randomY != Board.Mhos[i].getY())) {
+				System.out.println(i);
+				if (Board.squareTracker[randomX][randomY].getStatus() == 'u') {
 					counter++;
+					
 				}
 	
 			}
