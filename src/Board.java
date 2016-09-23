@@ -10,7 +10,9 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 public class Board extends JPanel implements KeyListener {
-	public static Mho[] Mhos;
+	
+	public static Mho[] Mhos = new Mho[12]; 
+	
 	int frameHeight = 600, frameWidth = 600;
 	private JPanel[][] squares;
 	public static Square[][] squareTracker = new Square[12][12];
@@ -31,6 +33,7 @@ public class Board extends JPanel implements KeyListener {
 		addFenceBorder();
 		spawnPlayer();
 		addRandomFences();
+		spawnMhos();
 		this.setVisible(true);
 		addKeyListener(this);
 		
@@ -120,7 +123,23 @@ public class Board extends JPanel implements KeyListener {
 	}
 	
 	void spawnMhos() {
-		
+		//fill mhos with
+		for (int r = 0; r < 12; r++) {
+			Mhos[r] = new Mho(0, 0);
+		}
+		int counter = 0;
+		while (true) {
+			Mhos[counter].moveRandom();
+			if (squareTracker[Mhos[counter].getX()][Mhos[counter].getY()].getStatus() == 'u') {
+				squares[Mhos[counter].getX()][Mhos[counter].getY()].add(Mhos[counter]);
+				squareTracker[Mhos[counter].getX()][Mhos[counter].getY()].setStatus('m');
+				counter++;
+				repaint();
+			}
+			if (counter == 12) {
+				break;
+			}
+		}
 	}
 	
 	@Override

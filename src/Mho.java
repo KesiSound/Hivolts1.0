@@ -16,7 +16,7 @@ public class Mho extends JLabel {
 		this.y = y;
 	}
 	int randomXY() {
-		return (1 + (int) (Math.random() * 12));
+		return (1 + (int) (Math.random() * 10));
 
 	}
 
@@ -57,5 +57,13 @@ public class Mho extends JLabel {
 		else {
 			
 		}
+	}
+	
+	public void setX(int newX) {
+		x = newX;
+	}
+	
+	public void setY(int newY) {
+		y = newY;
 	}
 }
