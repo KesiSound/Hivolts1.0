@@ -40,7 +40,7 @@ public class Player extends JLabel {
 
 	void moveUpLeft() {
 		moveUp();
-		moveRight();
+		moveLeft();
 	}
 
 	void moveDownRight() {

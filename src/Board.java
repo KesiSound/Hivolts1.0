@@ -29,13 +29,14 @@ public class Board extends JPanel implements KeyListener {
 		addSquareTracker();
 		add();
 		addFenceBorder();
-		addRandomFences();
 		spawnPlayer();
+		addRandomFences();
 		this.setVisible(true);
 		addKeyListener(this);
 		
 	}
 	private void add(){
+		repaint();
 		for (int j = 0; j < ROWS; j++) {
 			for (int i = 0; i < COLS; i++) {
 				squares[i][j] = new JPanel(); 
@@ -45,6 +46,7 @@ public class Board extends JPanel implements KeyListener {
 	}
 
 	private void addLabels() {
+		repaint();
 		JLabel label;
 		JLabel label1; 
 		label = new Barrier(3,2);
@@ -60,6 +62,7 @@ public class Board extends JPanel implements KeyListener {
 
 	
 	void addFenceBorder() {
+		repaint();
 		for (int i =0; i < 12; i++){
 			for (int a = 0; a < 12; a++){
 				squareTracker[i][a] = new Square();
@@ -94,6 +97,7 @@ public class Board extends JPanel implements KeyListener {
 
 	
 	void addRandomFences() {
+		repaint();
 		JLabel fences;
 		int counter = 0;
 		while (true) { 
@@ -114,10 +118,12 @@ public class Board extends JPanel implements KeyListener {
 	
 	
 	void spawnPlayer() {
+		repaint();
 		ourPlayer.moveRandom();
 		JLabel playerLabel = ourPlayer;
 		ourPlayer.setBorder(new EmptyBorder(10,10,10,10));
 		squares[ourPlayer.getX()][ourPlayer.getY()].add(playerLabel);
+		squareTracker[ourPlayer.getX()][ourPlayer.getY()].setStatus('p');
 		repaint();
 	}
 	
@@ -140,6 +146,75 @@ public class Board extends JPanel implements KeyListener {
 		case 'w':
 			System.out.println("hit w lol");
 			ourPlayer.moveUp();
+			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
+				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
+				repaint();
+				break;
+			}
+			else {
+				ourPlayer.moveDown();
+			}
+			
+		case 'a':
+			System.out.println("hit a");
+			ourPlayer.moveLeft();
+			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
+				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
+				repaint();
+				break;
+			}
+			else {
+				ourPlayer.moveRight();
+			}
+			
+		case 'd':
+			System.out.println("hit d");
+			ourPlayer.moveRight();
+			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
+				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
+				repaint();
+				break;
+			}
+			else {
+				ourPlayer.moveLeft();
+			}
+		case 's':
+			System.out.println("hit s");
+			repaint();
+			break;
+		case 'x': 
+			System.out.println("hit x");
+			ourPlayer.moveDown();
+			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
+				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
+				repaint();
+				break;
+			}
+			else {
+				ourPlayer.moveUp();
+			}
+		case 'q':
+			System.out.println("hit q");
+			ourPlayer.moveUpLeft();
+			repaint();
+		case 'e':
+			System.out.println("hit e");
+			ourPlayer.moveUpRight();
+			repaint();
+			break;
+		case 'z':
+			System.out.println("hit z");
+			ourPlayer.moveDownLeft();
+			repaint();
+			break;
+		case 'c':
+			System.out.println("hit c");
+			ourPlayer.moveDownRight();
+			repaint();
+			break;
+		case 'j':
+			ourPlayer.Jump();
+			repaint();
 			break;
 		}
 
@@ -149,7 +224,7 @@ public class Board extends JPanel implements KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+		//Add moveAI();
 	}
 
 	
