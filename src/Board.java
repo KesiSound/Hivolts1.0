@@ -124,6 +124,7 @@ public class Board extends JPanel implements KeyListener {
 		//fill mhos with
 		for (int r = 0; r < 12; r++) {
 			Mhos[r] = new Mho(0, 0);
+			Mhos[r].setBorder(new EmptyBorder(10,10,10,10));
 		}
 		int counter = 0;
 		while (true) {
@@ -319,15 +320,66 @@ public class Board extends JPanel implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		//Add moveAI();
-		
-		
-
+		char key = e.getKeyChar();
+		switch(key) {
+		case 'q':
+			for (int i1 = 0; i1 < 12; i1++) {
+				Mhos[i1].moveAI(ourPlayer);
+				repaint();
+				break;
+			}
+			
+		case 'w':
+			for (int i2= 0; i2 < 12; i2++) {
+				Mhos[i2].moveAI(ourPlayer);
+				repaint();
+				break;
+			}
+	
+		case 'e':
+			for (int i1 = 0; i1 < 12; i1++) {
+				Mhos[i1].moveAI(ourPlayer);
+				repaint();
+				break;
+			}
+		case 'a':
+			for (int i1 = 0; i1 < 12; i1++) {
+				Mhos[i1].moveAI(ourPlayer);
+				repaint();
+				break;
+			}
+		case 's':
+			for (int i1 = 0; i1 < 12; i1++) {
+				Mhos[i1].moveAI(ourPlayer);
+				repaint();
+				break;
+			}
+		case 'd':
+			for (int i1 = 0; i1 < 12; i1++) {
+				Mhos[i1].moveAI(ourPlayer);
+				repaint();
+				break;
+			}
+		case 'z':
+			for (int i1 = 0; i1 < 12; i1++) {
+				Mhos[i1].moveAI(ourPlayer);
+				repaint();
+				break;
+			}
+		case 'x':
+			for (int i1 = 0; i1 < 12; i1++) {
+				Mhos[i1].moveAI(ourPlayer);
+				repaint();
+				break;
+			}
+		case 'c':
+			for (int i1 = 0; i1 < 12; i1++) {
+				Mhos[i1].moveAI(ourPlayer);
+				repaint();
+				break;
+			}
+		}
 	}
-	
-
-
-	
-	
 }
 	
 
