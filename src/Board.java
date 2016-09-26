@@ -81,7 +81,6 @@ public class Board extends JPanel implements KeyListener {
 			squareTracker[fences.getX()][fences.getY()].setStatus('f');
 		}	
 	}
-
 	
 	void addRandomFences() {
 		repaint();
@@ -155,6 +154,7 @@ public class Board extends JPanel implements KeyListener {
 			ourPlayer.moveUp();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
+				squareTracker[ourPlayer.getX()][ourPlayer.getY()].setStatus('p');
 				repaint();
 				break;
 			}
@@ -170,6 +170,7 @@ public class Board extends JPanel implements KeyListener {
 			ourPlayer.moveLeft();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
+				squareTracker[ourPlayer.getX()][ourPlayer.getY()].setStatus('p');
 				repaint();
 				break;
 			}
@@ -188,6 +189,7 @@ public class Board extends JPanel implements KeyListener {
 			ourPlayer.moveRight();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
+				squareTracker[ourPlayer.getX()][ourPlayer.getY()].setStatus('p');
 				repaint();
 				break;
 			}
@@ -208,6 +210,7 @@ public class Board extends JPanel implements KeyListener {
 			ourPlayer.moveDown();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
+				squareTracker[ourPlayer.getX()][ourPlayer.getY()].setStatus('p');
 				repaint();
 				break;	
 				
@@ -223,6 +226,7 @@ public class Board extends JPanel implements KeyListener {
 			ourPlayer.moveUpLeft();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
+				squareTracker[ourPlayer.getX()][ourPlayer.getY()].setStatus('p');
 				repaint();
 				break;
 			}
@@ -236,6 +240,7 @@ public class Board extends JPanel implements KeyListener {
 			ourPlayer.moveUpRight();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
+				squareTracker[ourPlayer.getX()][ourPlayer.getY()].setStatus('p');
 				repaint();
 				break;
 			}
@@ -250,6 +255,7 @@ public class Board extends JPanel implements KeyListener {
 			ourPlayer.moveDownLeft();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
+				squareTracker[ourPlayer.getX()][ourPlayer.getY()].setStatus('p');
 				repaint();
 				break;
 			}
@@ -263,6 +269,7 @@ public class Board extends JPanel implements KeyListener {
 			ourPlayer.moveDownRight();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
+				squareTracker[ourPlayer.getX()][ourPlayer.getY()].setStatus('p');
 				repaint();
 				break;
 			}
@@ -275,6 +282,7 @@ public class Board extends JPanel implements KeyListener {
 			ourPlayer.Jump();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
+				squareTracker[ourPlayer.getX()][ourPlayer.getY()].setStatus('p');
 				repaint();
 				break;
 			}
@@ -287,6 +295,9 @@ public class Board extends JPanel implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		//Add moveAI();
+		
+		
+
 	}
 	
 	

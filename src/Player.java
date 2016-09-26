@@ -80,20 +80,10 @@ public class Player extends JLabel {
 	void Jump() {
 		int randomX;
 		int randomY;
-		int counter = 0;
 		while (true) {
-			counter = 0;
 			randomX = randomXY();
 			randomY = randomXY();
-			for (int i = 0; i < 12; i++) {
-				System.out.println(i);
-				if (Board.squareTracker[randomX][randomY].getStatus() == 'u') {
-					counter++;
-					
-				}
-	
-			}
-			if (counter==12) {
+			if (Board.squareTracker[randomX][randomY].getStatus() != 'f') {
 				moveToPosition(randomX, randomY);
 				break;
 			}
