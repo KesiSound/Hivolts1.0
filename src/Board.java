@@ -150,11 +150,13 @@ public class Board extends JPanel implements KeyListener {
 		char key = e.getKeyChar();
 		switch(key) {
 		case 'w':
-			System.out.println("hit w lol");
+			int oldX = ourPlayer.getX();
+			int oldY = ourPlayer.getY();
 			ourPlayer.moveUp();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
 				squareTracker[ourPlayer.getX()][ourPlayer.getY()].setStatus('p');
+				squareTracker[oldX][oldY].setStatus('u');
 				repaint();
 				break;
 			}
@@ -166,11 +168,13 @@ public class Board extends JPanel implements KeyListener {
 			}
 			
 		case 'a':
-			System.out.println("hit a");
+			int oldX1 = ourPlayer.getX();
+			int oldY1 = ourPlayer.getY();
 			ourPlayer.moveLeft();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
 				squareTracker[ourPlayer.getX()][ourPlayer.getY()].setStatus('p');
+				squareTracker[oldX1][oldY1].setStatus('u');
 				repaint();
 				break;
 			}
@@ -185,11 +189,14 @@ public class Board extends JPanel implements KeyListener {
 			}
 			
 		case 'd':
+			int oldX2 = ourPlayer.getX();
+			int oldY2 = ourPlayer.getY();
 			System.out.println("hit d");
 			ourPlayer.moveRight();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
 				squareTracker[ourPlayer.getX()][ourPlayer.getY()].setStatus('p');
+				squareTracker[oldX2][oldY2].setStatus('u');
 				repaint();
 				break;
 			}
@@ -206,11 +213,14 @@ public class Board extends JPanel implements KeyListener {
 			repaint();
 			break;
 		case 'x': 
+			int oldX3 = ourPlayer.getX();
+			int oldY3 = ourPlayer.getY();
 			System.out.println("hit x");
 			ourPlayer.moveDown();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
 				squareTracker[ourPlayer.getX()][ourPlayer.getY()].setStatus('p');
+				squareTracker[oldX3][oldY3].setStatus('u');
 				repaint();
 				break;	
 				
@@ -222,11 +232,14 @@ public class Board extends JPanel implements KeyListener {
 				
 			}
 		case 'q':
+			int oldX4 = ourPlayer.getX();
+			int oldY4 = ourPlayer.getY();
 			System.out.println("hit q");
 			ourPlayer.moveUpLeft();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
 				squareTracker[ourPlayer.getX()][ourPlayer.getY()].setStatus('p');
+				squareTracker[oldX4][oldY4].setStatus('u');
 				repaint();
 				break;
 			}
@@ -236,11 +249,14 @@ public class Board extends JPanel implements KeyListener {
 				System.exit(0);
 			}
 		case 'e':
+			int oldX5 = ourPlayer.getX();
+			int oldY5 = ourPlayer.getY();
 			System.out.println("hit e");
 			ourPlayer.moveUpRight();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
 				squareTracker[ourPlayer.getX()][ourPlayer.getY()].setStatus('p');
+				squareTracker[oldX5][oldY5].setStatus('u');
 				repaint();
 				break;
 			}
@@ -251,11 +267,14 @@ public class Board extends JPanel implements KeyListener {
 
 			}
 		case 'z':
+			int oldX6 = ourPlayer.getX();
+			int oldY6 = ourPlayer.getY();
 			System.out.println("hit z");
 			ourPlayer.moveDownLeft();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
 				squareTracker[ourPlayer.getX()][ourPlayer.getY()].setStatus('p');
+				squareTracker[oldX6][oldY6].setStatus('u');
 				repaint();
 				break;
 			}
@@ -266,10 +285,13 @@ public class Board extends JPanel implements KeyListener {
 			}
 		case 'c':
 			System.out.println("hit c");
+			int oldX7 = ourPlayer.getX();
+			int oldY7 = ourPlayer.getY();
 			ourPlayer.moveDownRight();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
 				squareTracker[ourPlayer.getX()][ourPlayer.getY()].setStatus('p');
+				squareTracker[oldX7][oldY7].setStatus('u');
 				repaint();
 				break;
 			}
@@ -279,10 +301,13 @@ public class Board extends JPanel implements KeyListener {
 				System.exit(0);
 			}
 		case 'j':
+			int oldX8 = ourPlayer.getX();
+			int oldY8 = ourPlayer.getY();
 			ourPlayer.Jump();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
 				squareTracker[ourPlayer.getX()][ourPlayer.getY()].setStatus('p');
+				squareTracker[oldX8][oldY8].setStatus('u');
 				repaint();
 				break;
 			}
