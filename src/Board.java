@@ -16,7 +16,6 @@ public class Board extends JPanel implements KeyListener {
 	int frameHeight = 600, frameWidth = 600;
 	private JPanel[][] squares;
 	public static Square[][] squareTracker = new Square[12][12];
-	
 	private int ROWS = 12, COLS = 12;
 	Player ourPlayer = new Player(0,0);
 
@@ -24,10 +23,10 @@ public class Board extends JPanel implements KeyListener {
 	//have to make the points randomized
 
 	public Board() {
+		
 		setPreferredSize(new Dimension(frameHeight, frameWidth));
 		squares = new JPanel[ROWS][COLS]; 
 		setLayout(new GridLayout(ROWS, COLS));
-		setBackground(Color.BLACK);
 		addSquareTracker();
 		add();
 		addFenceBorder();
@@ -300,12 +299,7 @@ public class Board extends JPanel implements KeyListener {
 
 	}
 	
-	
-	public void drawDeadScreen(Graphics2D g){
-		g.setColor(Color.BLACK);
-		g.fillRect(0,0,800,800);
-		g.drawString("AHHAH you lost", 350, 350);
-	}
+
 
 	
 	

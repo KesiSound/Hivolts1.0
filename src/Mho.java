@@ -33,6 +33,15 @@ public class Mho extends JLabel {
 	}
 	//AI
 	void moveAI(Player thePlayer) {
+		int PlayerX = thePlayer.getX();
+		int PlayerY = thePlayer.getY();
+		int MhoX = getX();
+		int MhoY = getY();
+		int xDist = PlayerX - MhoX;
+		int yDist = PlayerY - MhoY;
+		double dist = Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2));
+		
+		
 		//If the player is directly vertical or horizontal, move towards it
 		if (thePlayer.getX() == getX() || thePlayer.getY() == getY()) {
 			if (thePlayer.getX() == getX()) {
@@ -55,6 +64,10 @@ public class Mho extends JLabel {
 		
 		//If it is not directly vertical or horizontal...
 		else {
+			
+			
+			
+			
 			
 		}
 	}
