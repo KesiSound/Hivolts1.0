@@ -3,7 +3,7 @@ import java.awt.Image;
 import javax.swing.*;
 
 public class Mho extends JLabel {
-	private int x, y;
+	private int x, y;					//Mho x and y coordinate
 	public Mho(int x, int y) {
 		ImageIcon imageIcon = new ImageIcon(new ImageIcon("img/Enemy.png").
 		getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
@@ -64,7 +64,35 @@ public class Mho extends JLabel {
 		
 		//If it is not directly vertical or horizontal...
 		else {
+			//Diag movement 
 			
+			//diag movement up then left
+			if (MhoY > PlayerY && MhoX > PlayerX){
+				this.y--;
+				this.x--;
+				
+			}
+			
+			//diag movement up then right
+			else if (MhoY > PlayerY && MhoX < PlayerX){
+				this.y--;
+				this.x++;
+				
+			}
+			
+			//diag movement down then left
+			else if(MhoY < PlayerY && MhoX > PlayerX){
+				this.x--;
+				this.y++;
+				
+				
+			}
+			
+			//diag movement down then right
+			else if (MhoY < PlayerY && MhoX < PlayerX){
+				this.x++;
+				this.y--;
+			}
 			
 			
 			
