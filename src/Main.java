@@ -10,7 +10,6 @@ public class Main {
 	public static void main(String[] args) {
 		Board b = new Board();
 		b.setFocusable(true);
-		
 		JFrame window = new JFrame();
 		window.getContentPane().setBackground(Color.black);
 		window.setSize(600, 600);

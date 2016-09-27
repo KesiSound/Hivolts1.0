@@ -5,16 +5,18 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 public class Board extends JPanel implements KeyListener {
 	
-	public static Mho[] Mhos = new Mho[12]; 
+	public static ArrayList<Mho> Mhos = new ArrayList<Mho>(); 
 	
 	int frameHeight = 600, frameWidth = 600;
-	private JPanel[][] squares;
+	public static JPanel[][] squares;
 	public static Square[][] squareTracker = new Square[12][12];
 	private int ROWS = 12, COLS = 12;
 	Player ourPlayer = new Player(0,0);
@@ -123,15 +125,15 @@ public class Board extends JPanel implements KeyListener {
 	void spawnMhos() {
 		//fill mhos with
 		for (int r = 0; r < 12; r++) {
-			Mhos[r] = new Mho(0, 0);
-			Mhos[r].setBorder(new EmptyBorder(10,10,10,10));
+			Mhos.add(r, new Mho(0, 0));
+			Mhos.get(r).setBorder(new EmptyBorder(10,10,10,10));
 		}
 		int counter = 0;
 		while (true) {
-			Mhos[counter].moveRandom();
-			if (squareTracker[Mhos[counter].getX()][Mhos[counter].getY()].getStatus() == 'u') {
-				squares[Mhos[counter].getX()][Mhos[counter].getY()].add(Mhos[counter]);
-				squareTracker[Mhos[counter].getX()][Mhos[counter].getY()].setStatus('m');
+			Mhos.get(counter).moveRandom();
+			if (squareTracker[Mhos.get(counter).getX()][Mhos.get(counter).getY()].getStatus() == 'u') {
+				squares[Mhos.get(counter).getX()][Mhos.get(counter).getY()].add(Mhos.get(counter));
+				squareTracker[Mhos.get(counter).getX()][Mhos.get(counter).getY()].setStatus('m');
 				counter++;
 				repaint();
 			}
@@ -316,69 +318,62 @@ public class Board extends JPanel implements KeyListener {
 		
 	}
 
-	@Override
+	
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		//Add moveAI();
 		char key = e.getKeyChar();
 		switch(key) {
 		case 'q':
-			for (int i1 = 0; i1 < 12; i1++) {
-				Mhos[i1].moveAI(ourPlayer);
+			moveAICool();
+			break;
+		case 'w':
+			moveAICool();
+			break;
+		case 'e':
+			moveAICool();
+			break;
+		case 'a':
+			moveAICool();
+			break;
+		case 's':
+			moveAICool();
+			break;
+		case 'd':
+			moveAICool();
+			break;
+		case 'z':
+			moveAICool();
+			break;
+		case 'x':
+			moveAICool();
+			break;
+		case 'c':
+			moveAICool();
+			break;
+			
+		}
+	}
+	
+	public void moveAICool() {
+		for (int i = 0; i < Mhos.size(); i++) {
+			int oldX = Mhos.get(i).getX();
+			int oldY = Mhos.get(i).getY();
+			Mhos.get(i).moveAI(ourPlayer);
+			if (squareTracker[Mhos.get(i).getX()][Mhos.get(i).getY()].getStatus() != 'u') {
+				squares[Mhos.get(i).getX()][Mhos.get(i).getY()].remove(Mhos.get(i));
+				Mhos.remove(i);
 				repaint();
 				break;
+			}
+			else {
+				squares[Mhos.get(i).getX()][Mhos.get(i).getY()].add(Mhos.get(i));
+				squareTracker[Mhos.get(i).getX()][Mhos.get(i).getY()].setStatus('m');
+				squareTracker[oldX][oldY].setStatus('u');
 			}
 			
-		case 'w':
-			for (int i2= 0; i2 < 12; i2++) {
-				Mhos[i2].moveAI(ourPlayer);
-				repaint();
-				break;
-			}
-	
-		case 'e':
-			for (int i1 = 0; i1 < 12; i1++) {
-				Mhos[i1].moveAI(ourPlayer);
-				repaint();
-				break;
-			}
-		case 'a':
-			for (int i1 = 0; i1 < 12; i1++) {
-				Mhos[i1].moveAI(ourPlayer);
-				repaint();
-				break;
-			}
-		case 's':
-			for (int i1 = 0; i1 < 12; i1++) {
-				Mhos[i1].moveAI(ourPlayer);
-				repaint();
-				break;
-			}
-		case 'd':
-			for (int i1 = 0; i1 < 12; i1++) {
-				Mhos[i1].moveAI(ourPlayer);
-				repaint();
-				break;
-			}
-		case 'z':
-			for (int i1 = 0; i1 < 12; i1++) {
-				Mhos[i1].moveAI(ourPlayer);
-				repaint();
-				break;
-			}
-		case 'x':
-			for (int i1 = 0; i1 < 12; i1++) {
-				Mhos[i1].moveAI(ourPlayer);
-				repaint();
-				break;
-			}
-		case 'c':
-			for (int i1 = 0; i1 < 12; i1++) {
-				Mhos[i1].moveAI(ourPlayer);
-				repaint();
-				break;
-			}
 		}
+		repaint();
 	}
 }
 	

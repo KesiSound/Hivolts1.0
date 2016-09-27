@@ -34,7 +34,7 @@ public class Barrier extends JLabel {
 	}
 	
 	int randomXY() {
-		return (1 + (int) (Math.random() * 10));
+		return (1 + (int)(Math.random() * ((10 - 1) + 1)));
 
 	}
 

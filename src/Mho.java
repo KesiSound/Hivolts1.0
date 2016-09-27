@@ -16,7 +16,7 @@ public class Mho extends JLabel {
 		this.y = y;
 	}
 	int randomXY() {
-		return (1 + (int) (Math.random() * 10));
+		return (1 + (int)(Math.random() * ((10 - 1) + 1)));
 
 	}
 
