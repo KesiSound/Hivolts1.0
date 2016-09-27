@@ -46,10 +46,10 @@ public class Mho extends JLabel {
 		if (thePlayer.getX() == getX() || thePlayer.getY() == getY()) {
 			if (thePlayer.getX() == getX()) {
 				if (thePlayer.getY() > getY()) {
-					this.y--;
+					this.y++;
 				}
 				else {
-					this.y++;
+					this.y--;
 				}
 			}
 			if(thePlayer.getY() == getY()) {
@@ -91,12 +91,8 @@ public class Mho extends JLabel {
 			//diag movement down then right
 			else if (MhoY < PlayerY && MhoX < PlayerX){
 				this.x++;
-				this.y--;
-			}
-			
-			
-			
-			
+				this.y++;
+			}	
 		}
 	}
 	

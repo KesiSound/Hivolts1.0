@@ -51,7 +51,7 @@ public class Board extends JPanel implements KeyListener {
 	
 	void addFenceBorder() {
 		repaint();
-		for (int i =0; i < 12; i++){
+		for (int i = 0; i < 12; i++){
 			for (int a = 0; a < 12; a++){
 				squareTracker[i][a] = new Square();
 				
@@ -326,30 +326,39 @@ public class Board extends JPanel implements KeyListener {
 		switch(key) {
 		case 'q':
 			moveAICool();
+			repaint();
 			break;
 		case 'w':
 			moveAICool();
+			repaint();
 			break;
 		case 'e':
 			moveAICool();
+			repaint();
 			break;
 		case 'a':
 			moveAICool();
+			repaint();
 			break;
 		case 's':
 			moveAICool();
+			repaint();
 			break;
 		case 'd':
 			moveAICool();
+			repaint();
 			break;
 		case 'z':
 			moveAICool();
+			repaint();
 			break;
 		case 'x':
 			moveAICool();
+			repaint();
 			break;
 		case 'c':
 			moveAICool();
+			repaint();
 			break;
 			
 		}
@@ -360,18 +369,29 @@ public class Board extends JPanel implements KeyListener {
 			int oldX = Mhos.get(i).getX();
 			int oldY = Mhos.get(i).getY();
 			Mhos.get(i).moveAI(ourPlayer);
-			if (squareTracker[Mhos.get(i).getX()][Mhos.get(i).getY()].getStatus() != 'u') {
+			if (squareTracker[Mhos.get(i).getX()][Mhos.get(i).getY()].getStatus() == 'f') {
 				squares[Mhos.get(i).getX()][Mhos.get(i).getY()].remove(Mhos.get(i));
 				Mhos.remove(i);
 				repaint();
-				break;
+				
+			}
+			if (squareTracker[Mhos.get(i).getX()][Mhos.get(i).getY()].getStatus()=='p') {
+				squares[Mhos.get(i).getX()][Mhos.get(i).getY()].remove(ourPlayer);
+				squares[Mhos.get(i).getX()][Mhos.get(i).getY()].add(Mhos.get(i));
+				squareTracker[oldX][oldY].setStatus('u');
+				squareTracker[Mhos.get(i).getX()][Mhos.get(i).getY()].setStatus('m');
+				repaint();
+
+				System.out.println("You lose");
+				//setVisible(false);
+				//System.exit(0);
 			}
 			else {
 				squares[Mhos.get(i).getX()][Mhos.get(i).getY()].add(Mhos.get(i));
 				squareTracker[Mhos.get(i).getX()][Mhos.get(i).getY()].setStatus('m');
 				squareTracker[oldX][oldY].setStatus('u');
+				repaint();
 			}
-			
 		}
 		repaint();
 	}
