@@ -1,3 +1,5 @@
+//Kesi Sound, Jerry Wu, Aashai Avadhani
+//Mho Class
 import java.awt.Image;
 
 import javax.swing.*;

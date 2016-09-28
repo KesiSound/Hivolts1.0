@@ -1,4 +1,5 @@
-
+//Kesi Sound, Jerry Wu, Aashai Avadhani
+//Barrier class
 import java.awt.Image;
 
 import java.awt.Color;

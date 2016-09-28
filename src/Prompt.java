@@ -1,3 +1,5 @@
+//Kesi Sound, Jerry Wu, Aashai Avadhani
+//Prompt class
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;

@@ -1,3 +1,5 @@
+//Kesi Sound, Jerry Wu, Aashai Avadhani
+//Board class
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
