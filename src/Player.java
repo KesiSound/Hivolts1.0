@@ -9,7 +9,7 @@ public class Player extends JLabel {
 	private int x, y;
 	boolean dead = false;
 	Board b;
-	public Player(int x, int y, Board b) {
+	public Player(int x, int y, Board b) { //Creates a new player that has x and y coordinates as well as a board that it will modify
 		ImageIcon imageIcon = new ImageIcon(
 				new ImageIcon("img/Player.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
 		this.setIcon(imageIcon);
@@ -17,7 +17,7 @@ public class Player extends JLabel {
 		this.y = y;
 		this.b = b;
 	}
-
+	//Functions for changing x and y coordinates based on movement
 	void moveUp() {
 		y -= 1;
 
@@ -66,21 +66,20 @@ public class Player extends JLabel {
 		return this.y;
 	}
 
-	int randomXY() {
-		Random rn = new Random();
-		return 1 + rn.nextInt(10);
+	int randomXY() { //Creates a new random coordinate inside the fence border
+		return (1 + (int)(Math.random() * ((10 - 1) + 1))); 
 	}
 
-	void moveRandom() {
+	void moveRandom() { //Movs player to random place
 		moveToPosition(randomXY(), randomXY());
 	}
 
-	public void moveToPosition(int x, int y) {
+	public void moveToPosition(int x, int y) { //Sets position
 		this.x = x;
 		this.y = y;
 	}
 	
-	void Jump() {
+	void Jump() { //Handles changing coordinates for when you jump
 		int randomX;
 		int randomY;
 		while (true) {

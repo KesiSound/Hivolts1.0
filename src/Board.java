@@ -23,7 +23,7 @@ public class Board extends JPanel implements KeyListener {
 	private boolean lost = false; //Makes the default state not a loss
 
 	public Board(Prompt status) { //Constructor for Board, takes a prompt and creates a JPanel
-		this.setBackground(Color.BLUE); //Doesn't work for whatever reason. doesn't do what it's supposed to do
+		this.setBackground(Color.BLACK); //Doesn't work for whatever reason. doesn't do what it's supposed to do
 		setFocusable(true);
 		this.status = status;
 		setPreferredSize(new Dimension(frameHeight, frameWidth));

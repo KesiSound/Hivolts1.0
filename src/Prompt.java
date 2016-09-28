@@ -8,21 +8,21 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
-public class Prompt extends JPanel{ //test
+public class Prompt extends JPanel{ //Creates Prompt type object that are JPanels
 	
-	JLabel status; 
-	JButton restart, quit;
-	Main m;
+	JLabel status; //Prompt will have status JLabel
+	JButton restart, quit; //Prompt will have buttons to restart or quit
+	Main m; //Prompt will have an object of type Main
 	
 	public Prompt(Main m){
 		setBackground(Color.WHITE);
-		status = createLabel();
+		status = yourTurn(); //Shows the stuff that says it's your turn
 		add(status, BorderLayout.CENTER);
 		this.m = m;
 		setVisible(true);
 	}
 	
-	private JLabel createLabel(){
+	private JLabel yourTurn(){ //Prints the 
 		JLabel status = new JLabel("It is your turn", JLabel.CENTER);
 		status.setBackground(Color.WHITE);
 		status.setFont(new Font("Serif", Font.PLAIN, 20));		
