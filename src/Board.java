@@ -1,14 +1,10 @@
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.WindowEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class Board extends JPanel implements KeyListener {
@@ -383,6 +379,8 @@ public class Board extends JPanel implements KeyListener {
 				repaint();
 
 				System.out.println("You lose");
+				
+				break;
 				//setVisible(false);
 				//System.exit(0);
 			}

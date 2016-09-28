@@ -40,16 +40,6 @@ public class Barrier extends JLabel {
 
 	void moveRandomInside() {
 		moveToPosition(randomXY(), randomXY());
-	}
-	
-
-	int getX1() {
-		return x;
-	}
-	
-	int getY1() {
-		return y;
-	}
-	
+	}	
 
 }
