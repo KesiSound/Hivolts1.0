@@ -1,27 +1,31 @@
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.Iterator;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class Board extends JPanel implements KeyListener {
 	
-	public static ArrayList<Mho> Mhos = new ArrayList<Mho>(); 
+	public static ArrayList<Mho> Mhos = new ArrayList<Mho>(); //Creates new ArrayList of Mhos
 	
-	int frameHeight = 600, frameWidth = 600;
-	public static JPanel[][] squares;
-	public static Square[][] squareTracker = new Square[12][12];
-	private int ROWS = 12, COLS = 12;
-	Player ourPlayer = new Player(0,0);
+	int frameHeight = 600, frameWidth = 600; //Used to set window frame heights
+	public JPanel[][] squares; //Stores the JPanel Components in a 2D array to display stuff on the JFrame
+	public Square[][] squareTracker = new Square[12][12]; //Stores a 2D array of squares which have statuses of what is currently in each box
+	private int ROWS = 12, COLS = 12; //Used when making the array of squares
+	Player ourPlayer = new Player(0,0, this); //Creates the player that you play as
+	Prompt status; //Defines a new prompt object called status
+	private boolean lost = false; //Makes the default state not a loss
 
-	
-	//have to make the points randomized
-
-	public Board() {
-		
+	public Board(Prompt status) { //Constructor for Board, takes a prompt and creates a JPanel
+		this.setBackground(Color.BLUE); //Doesn't work for whatever reason. doesn't do what it's supposed to do
+		setFocusable(true);
+		this.status = status;
 		setPreferredSize(new Dimension(frameHeight, frameWidth));
 		squares = new JPanel[ROWS][COLS]; 
 		setLayout(new GridLayout(ROWS, COLS));
@@ -32,10 +36,10 @@ public class Board extends JPanel implements KeyListener {
 		addRandomFences();
 		spawnMhos();
 		this.setVisible(true);
-		addKeyListener(this);
-		
+		addKeyListener(this);		
 	}
-	private void add(){
+	
+	private void add(){ //Creates the board by adding JPanels to each square in the squares array
 		repaint();
 		for (int j = 0; j < ROWS; j++) {
 			for (int i = 0; i < COLS; i++) {
@@ -45,8 +49,7 @@ public class Board extends JPanel implements KeyListener {
 		}
 	}
 	
-	void addFenceBorder() {
-		repaint();
+	void addFenceBorder() { //Adds the fence border
 		for (int i = 0; i < 12; i++){
 			for (int a = 0; a < 12; a++){
 				squareTracker[i][a] = new Square();
@@ -54,9 +57,7 @@ public class Board extends JPanel implements KeyListener {
 			}
 		}
 		
-		
 		JLabel fences;
-		
 		for (int i = 0; i < 12; i++) {
 			if (i == 0 || i == 11) {
 				for (int a = 0; a < 12; a++) {
@@ -77,9 +78,10 @@ public class Board extends JPanel implements KeyListener {
 			squares[fences.getX()][fences.getY()].add(fences);
 			squareTracker[fences.getX()][fences.getY()].setStatus('f');
 		}	
+		repaint();
 	}
 	
-	void addRandomFences() {
+	void addRandomFences() { //Adds the 20 random fences, makes sure they don't overlap
 		repaint();
 		JLabel fences;
 		int counter = 0;
@@ -100,7 +102,7 @@ public class Board extends JPanel implements KeyListener {
 	
 	
 	
-	void spawnPlayer() {
+	void spawnPlayer() { //Spawns the player randomly
 		repaint();
 		ourPlayer.moveRandom();
 		JLabel playerLabel = ourPlayer;
@@ -110,18 +112,18 @@ public class Board extends JPanel implements KeyListener {
 		repaint();
 	}
 	
-	void addSquareTracker() {
+	void addSquareTracker() { //Fills the squareTracker array with squares 
 		for (int a = 0; a < 12; a++) {
 			for (int b = 0; b < 12; b++) {
-				squareTracker[a][b] = new Square(0,0,'u');
+				squareTracker[a][b] = new Square('u');
 			}
 		}
 	}
 	
 	void spawnMhos() {
-		//fill mhos with
+		//fill mhos with empty mhos, and then spawns the 12 mhos to random places 
 		for (int r = 0; r < 12; r++) {
-			Mhos.add(r, new Mho(0, 0));
+			Mhos.add(r, new Mho(this, 0, 0));
 			Mhos.get(r).setBorder(new EmptyBorder(10,10,10,10));
 		}
 		int counter = 0;
@@ -140,11 +142,14 @@ public class Board extends JPanel implements KeyListener {
 	}
 	
 	@Override
-	public void keyTyped(KeyEvent e) {
+	public void keyTyped(KeyEvent e) { //Never used, but in order to implement keyListeners it's needed
 	}
 	
 	@Override
-	public void keyPressed(KeyEvent e) {
+	public void keyPressed(KeyEvent e) { //Controls movement for player, updates squareTracker as well as win/lose status
+		if (lost) { //Makes sure that if you have lost you can't move around anymore
+			return;
+		}
 		char key = e.getKeyChar();
 		switch(key) {
 		case 'w':
@@ -159,12 +164,11 @@ public class Board extends JPanel implements KeyListener {
 				break;
 			}
 			else {
-				System.out.println("You lose");
-				setVisible(false);
-				System.exit(0);
-
-			}
-			
+				System.out.println("You lose 1");
+				status.deathPrompt();
+				lost = true;
+				return;
+			}			
 		case 'a':
 			int oldX1 = ourPlayer.getX();
 			int oldY1 = ourPlayer.getY();
@@ -177,13 +181,10 @@ public class Board extends JPanel implements KeyListener {
 				break;
 			}
 			else {
-				System.out.println("You lose");
-				setVisible(false);
-				System.exit(0);
-				ourPlayer.moveRight();
-				setVisible(false);
-				System.exit(0);
-				
+				System.out.println("You lose 2");
+				status.deathPrompt();
+				lost = true;				
+				return;
 			}
 			
 		case 'd':
@@ -199,12 +200,10 @@ public class Board extends JPanel implements KeyListener {
 				break;
 			}
 			else {
-
-				System.out.println("You lose");
-				setVisible(false);
-				System.exit(0);
-				ourPlayer.moveLeft();
-
+				System.out.println("You lose 3");
+				status.deathPrompt();
+				lost = true;				
+				return;
 			}
 		case 's':
 			System.out.println("hit s");
@@ -224,10 +223,10 @@ public class Board extends JPanel implements KeyListener {
 				
 			}
 			else {
-				System.out.println("You lose");
-				setVisible(false);
-				System.exit(0);
-				
+				System.out.println("You lose 4");
+				status.deathPrompt();
+				lost = true;				
+				return;
 			}
 		case 'q':
 			int oldX4 = ourPlayer.getX();
@@ -242,9 +241,10 @@ public class Board extends JPanel implements KeyListener {
 				break;
 			}
 			else {
-				System.out.println("You lose");
-				setVisible(false);
-				System.exit(0);
+				System.out.println("You lose 5");
+				status.deathPrompt();
+				lost = true;				
+				return;
 			}
 		case 'e':
 			int oldX5 = ourPlayer.getX();
@@ -259,10 +259,10 @@ public class Board extends JPanel implements KeyListener {
 				break;
 			}
 			else {
-				System.out.println("You lose");
-				setVisible(false);
-				System.exit(0);
-
+				System.out.println("You lose 6");
+				status.deathPrompt();
+				lost = true;				
+				return;
 			}
 		case 'z':
 			int oldX6 = ourPlayer.getX();
@@ -277,9 +277,10 @@ public class Board extends JPanel implements KeyListener {
 				break;
 			}
 			else {
-				System.out.println("You lose");
-				setVisible(false);
-				System.exit(0);
+				System.out.println("You lose 7");
+				status.deathPrompt();
+				lost = true;				
+				return;
 			}
 		case 'c':
 			System.out.println("hit c");
@@ -294,9 +295,10 @@ public class Board extends JPanel implements KeyListener {
 				break;
 			}
 			else {
-				System.out.println("You lose");
-				setVisible(false);
-				System.exit(0);
+				System.out.println("You lose 8");
+				status.deathPrompt();
+				lost = true;
+				return;
 			}
 		case 'j':
 			int oldX8 = ourPlayer.getX();
@@ -309,15 +311,20 @@ public class Board extends JPanel implements KeyListener {
 				repaint();
 				break;
 			}
+			else {
+				System.out.println("You lose 8");
+				status.deathPrompt();
+				lost = true;
+				return;
+			}
 		}
-
-		
 	}
 
 	
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		//Add moveAI();
+	public void keyReleased(KeyEvent e) { //Calls on AI after key is released signifying end of turn
+		if (lost) {//Makes sure that if you have lost the AI doesn't keep moving
+			return; 
+		}
 		char key = e.getKeyChar();
 		switch(key) {
 		case 'q':
@@ -355,43 +362,42 @@ public class Board extends JPanel implements KeyListener {
 		case 'c':
 			moveAICool();
 			repaint();
-			break;
-			
+			break;			
 		}
+		
 	}
 	
-	public void moveAICool() {
-		for (int i = 0; i < Mhos.size(); i++) {
-			int oldX = Mhos.get(i).getX();
-			int oldY = Mhos.get(i).getY();
-			Mhos.get(i).moveAI(ourPlayer);
-			if (squareTracker[Mhos.get(i).getX()][Mhos.get(i).getY()].getStatus() == 'f') {
-				squares[Mhos.get(i).getX()][Mhos.get(i).getY()].remove(Mhos.get(i));
-				Mhos.remove(i);
-				repaint();
-				
-			}
-			if (squareTracker[Mhos.get(i).getX()][Mhos.get(i).getY()].getStatus()=='p') {
-				squares[Mhos.get(i).getX()][Mhos.get(i).getY()].remove(ourPlayer);
-				squares[Mhos.get(i).getX()][Mhos.get(i).getY()].add(Mhos.get(i));
-				squareTracker[oldX][oldY].setStatus('u');
-				squareTracker[Mhos.get(i).getX()][Mhos.get(i).getY()].setStatus('m');
-				repaint();
-
+	public void moveAICool() { //Moves AI, called on for AI's turn
+		Iterator<Mho> i = Mhos.iterator(); //Used to iterate through the Mhos list
+		while (i.hasNext()) { //Makes sure that the loop only runs while there are still Mhos in the Mhos list
+			Mho m = i.next(); //Sets a Mho named m to a mho in the list		
+			int oldX = m.getX(); //Stores the x and y values before the AI is called on
+			int oldY = m.getY(); 
+			boolean moved = m.moveAI(ourPlayer); //Sets a moved status after AI is called, moveAI returns a boolean that shows if the Mho has been moved or not
+			if (ourPlayer.dead){ //Checks if the player is dead
+				//If the player is dead, you lose, puts up the death prompt	
 				System.out.println("You lose");
-				
-				break;
-				//setVisible(false);
-				//System.exit(0);
+				status.deathPrompt();
+				return;				
 			}
-			else {
-				squares[Mhos.get(i).getX()][Mhos.get(i).getY()].add(Mhos.get(i));
-				squareTracker[Mhos.get(i).getX()][Mhos.get(i).getY()].setStatus('m');
+			else if (m.dead){ //if the mho is dead, removes from the list and makes the space unfilled
+				squares[oldX][oldY].remove(m);			
 				squareTracker[oldX][oldY].setStatus('u');
-				repaint();
+				i.remove();
 			}
-		}
+			else if (moved) { //If the AI has been called open and everything is good, then it moves the position of the mho
+				squares[oldX][oldY].remove(m);			
+				squares[m.getX()][m.getY()].add(m);
+				squareTracker[m.getX()][m.getY()].setStatus('m');
+				squareTracker[oldX][oldY].setStatus('u');
+			}
+			repaint();			
+		}			
 		repaint();
+		if (Mhos.size() == 0){ //When there are no more Mhos left, you win
+			status.youWin();
+			
+		}
 	}
 }
 	
