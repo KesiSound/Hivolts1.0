@@ -24,7 +24,7 @@ public class Prompt extends JPanel{ //Creates Prompt type object that are JPanel
 		setVisible(true);
 	}
 	
-	private JLabel yourTurn(){ //Prints the 
+	private JLabel yourTurn(){ //Prompts you that it is your turn
 		JLabel status = new JLabel("It is your turn", JLabel.CENTER);
 		status.setBackground(Color.WHITE);
 		status.setFont(new Font("Serif", Font.PLAIN, 20));		
@@ -41,7 +41,7 @@ public class Prompt extends JPanel{ //Creates Prompt type object that are JPanel
 		{
 		    public void actionPerformed(ActionEvent e)
 		    {
-		        System.out.println("Play again");
+		        
 		        m.rebuild();
 		    }
 		});
@@ -51,12 +51,11 @@ public class Prompt extends JPanel{ //Creates Prompt type object that are JPanel
 		{
 		    public void actionPerformed(ActionEvent e)
 		    {
-		        System.out.println("going to quit");
 		        System.exit(1);
 		    }
 		});
 		remove(status);
-		add(new JLabel("You 've lost ! "));
+		add(new JLabel("You've lost!"));
 		add(restart);
 		add(quit);
 		revalidate();
@@ -68,7 +67,6 @@ public class Prompt extends JPanel{ //Creates Prompt type object that are JPanel
 		{
 		    public void actionPerformed(ActionEvent e)
 		    {
-		        System.out.println("play again");
 		        m.rebuild();
 		    }
 		});
@@ -78,12 +76,12 @@ public class Prompt extends JPanel{ //Creates Prompt type object that are JPanel
 		{
 		    public void actionPerformed(ActionEvent e)
 		    {
-		        System.out.println("going to quit");
+		        
 		        System.exit(1);
 		    }
 		});
 		remove(status);
-		add(new JLabel("You win !!! "));
+		add(new JLabel("You win!"));
 		add(restart);
 		add(quit);
 		revalidate();

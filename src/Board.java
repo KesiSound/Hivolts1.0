@@ -166,7 +166,6 @@ public class Board extends JPanel implements KeyListener {
 				break;
 			}
 			else {
-				System.out.println("You lose 1");
 				status.deathPrompt();
 				lost = true;
 				return;
@@ -183,7 +182,7 @@ public class Board extends JPanel implements KeyListener {
 				break;
 			}
 			else {
-				System.out.println("You lose 2");
+		
 				status.deathPrompt();
 				lost = true;				
 				return;
@@ -192,7 +191,7 @@ public class Board extends JPanel implements KeyListener {
 		case 'd':
 			int oldX2 = ourPlayer.getX();
 			int oldY2 = ourPlayer.getY();
-			System.out.println("hit d");
+			
 			ourPlayer.moveRight();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
@@ -202,19 +201,16 @@ public class Board extends JPanel implements KeyListener {
 				break;
 			}
 			else {
-				System.out.println("You lose 3");
 				status.deathPrompt();
 				lost = true;				
 				return;
 			}
 		case 's':
-			System.out.println("hit s");
 			repaint();
 			break;
 		case 'x': 
 			int oldX3 = ourPlayer.getX();
 			int oldY3 = ourPlayer.getY();
-			System.out.println("hit x");
 			ourPlayer.moveDown();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
@@ -225,7 +221,6 @@ public class Board extends JPanel implements KeyListener {
 				
 			}
 			else {
-				System.out.println("You lose 4");
 				status.deathPrompt();
 				lost = true;				
 				return;
@@ -233,7 +228,7 @@ public class Board extends JPanel implements KeyListener {
 		case 'q':
 			int oldX4 = ourPlayer.getX();
 			int oldY4 = ourPlayer.getY();
-			System.out.println("hit q");
+			 
 			ourPlayer.moveUpLeft();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
@@ -243,7 +238,6 @@ public class Board extends JPanel implements KeyListener {
 				break;
 			}
 			else {
-				System.out.println("You lose 5");
 				status.deathPrompt();
 				lost = true;				
 				return;
@@ -251,7 +245,6 @@ public class Board extends JPanel implements KeyListener {
 		case 'e':
 			int oldX5 = ourPlayer.getX();
 			int oldY5 = ourPlayer.getY();
-			System.out.println("hit e");
 			ourPlayer.moveUpRight();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
@@ -261,7 +254,6 @@ public class Board extends JPanel implements KeyListener {
 				break;
 			}
 			else {
-				System.out.println("You lose 6");
 				status.deathPrompt();
 				lost = true;				
 				return;
@@ -269,7 +261,7 @@ public class Board extends JPanel implements KeyListener {
 		case 'z':
 			int oldX6 = ourPlayer.getX();
 			int oldY6 = ourPlayer.getY();
-			System.out.println("hit z");
+		
 			ourPlayer.moveDownLeft();
 			if (squareTracker[ourPlayer.getX()][ourPlayer.getY()].getStatus() == 'u') {
 				squares[ourPlayer.getX()][ourPlayer.getY()].add(ourPlayer);
@@ -279,13 +271,13 @@ public class Board extends JPanel implements KeyListener {
 				break;
 			}
 			else {
-				System.out.println("You lose 7");
+				
 				status.deathPrompt();
 				lost = true;				
 				return;
 			}
 		case 'c':
-			System.out.println("hit c");
+			
 			int oldX7 = ourPlayer.getX();
 			int oldY7 = ourPlayer.getY();
 			ourPlayer.moveDownRight();
@@ -297,7 +289,7 @@ public class Board extends JPanel implements KeyListener {
 				break;
 			}
 			else {
-				System.out.println("You lose 8");
+				
 				status.deathPrompt();
 				lost = true;
 				return;
@@ -314,7 +306,7 @@ public class Board extends JPanel implements KeyListener {
 				break;
 			}
 			else {
-				System.out.println("You lose 8");
+				
 				status.deathPrompt();
 				lost = true;
 				return;
@@ -378,7 +370,6 @@ public class Board extends JPanel implements KeyListener {
 			boolean moved = m.moveAI(ourPlayer); //Sets a moved status after AI is called, moveAI returns a boolean that shows if the Mho has been moved or not
 			if (ourPlayer.dead){ //Checks if the player is dead
 				//If the player is dead, you lose, puts up the death prompt	
-				System.out.println("You lose");
 				status.deathPrompt();
 				return;				
 			}
